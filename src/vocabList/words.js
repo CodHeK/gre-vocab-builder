@@ -14,7 +14,7 @@ export const data =
       "words": ["futile", "ineffectual"],
     },
     {
-      "type": "sign/warning",
+      "type": "sign-warning",
       "words": ["forebode", "portend", "portent", "premonition", "foreshadow"],
     },
     {

@@ -10,11 +10,13 @@ class Learn extends Component {
   check(each, e) {
     console.log(each);
     console.log(this.props.data.type);
-    if(this.props.data.type == each) {
-      $("#"+this.props.data.word+each+this.props.data.type+"").css({'background-color': 'green'});
+    if(this.props.data.type === each) {
+      $("#"+this.props.data.word+each+this.props.data.type+"").css({'background-color': '#90EE90'});
+      $("#"+this.props.key+"").fadeOut(400);
     }
     else {
-      $("#"+this.props.data.word+each+this.props.data.type+"").css({'background-color': 'red'});
+      $("#"+this.props.data.word+each+this.props.data.type+"").css({'background-color': '#FF9494'});
+      $("#"+this.props.data.word+this.props.data.type+this.props.data.type+"").css({'background-color': '#90EE90'});
     }
   }
 
