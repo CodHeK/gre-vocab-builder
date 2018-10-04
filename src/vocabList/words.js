@@ -18,7 +18,7 @@ export const data =
       "words": ["forebode", "portend", "portent", "premonition", "foreshadow"],
     },
     {
-      "type": "threathening",
+      "type": "threatening",
       "words": ["intimidate", "omnious", "sinister"],
     },
     {
@@ -27,7 +27,7 @@ export const data =
     },
     {
       "type": "intellectual",
-      "words": ["cerebral", "erundite", "pundit"],
+      "words": ["cerebral", "erudite", "pundit"],
     },
     {
       "type": "skifull",
@@ -43,7 +43,7 @@ export const data =
     },
     {
       "type": "inclination",
-      "words": ["affinity", "aptitutde", "bent", "disposed", "penchant", "predilecation", "predisposition", "proclivity", "propensity"],
+      "words": ["affinity", "aptitutde", "bent", "disposed", "penchant", "predilection", "predisposition", "proclivity", "propensity"],
     },
     {
       "type": "horrifying-shocking",
@@ -51,7 +51,7 @@ export const data =
     },
     {
       "type": "attractive",
-      "words": ["asthetic", "comely"],
+      "words": ["aesthetic", "comely"],
     },
     {
       "type": "disconncted-separated",
@@ -59,7 +59,7 @@ export const data =
     },
     {
       "type": "very-talanted",
-      "words": ["prodigy", "precocious"],
+      "words": ["prodigy", "precocious","savant"],
     },
     {
       "type": "foolish-talk",
@@ -79,7 +79,7 @@ export const data =
     },
     {
       "type": "to-do-with-teaching",
-      "words": ["didantic", "pedantic"],
+      "words": ["didactic", "pedantic"],
     },
   ],
   "2": [
@@ -89,7 +89,7 @@ export const data =
     },
     {
       "type": "outdated-old-fashioned",
-      "words": ["antediluvian", "antiquated", "archaic", "dated", "obsolete", "outmoded", "quaint"],
+      "words": ["antedeluvian", "antiquated", "archaic", "dated", "obsolete", "outmodded", "quaint"],
     },
     {
       "type": "time-related-words",
@@ -141,7 +141,7 @@ export const data =
     },
     {
       "type": "mock-disrespect",
-      "words": ["abase", "belittle", "condoscend", "contempt", "denigrate", "deride", "disdain", "disparage", "jeer", "lampoon", "patronize", "sarcastic", "sardonic", "satire", "scoff", "scorn", "sneer", "snicker", "snide", "spurn", "taunt"],
+      "words": ["abase", "belittle", "condescend", "contempt", "denigrate", "deride", "disdain", "disparage", "jeer", "lampoon", "patronize", "sarcastic", "sardonic", "satire", "scoff", "scorn", "sneer", "snicker", "snide", "spurn", "taunt"],
     },
     {
       "type": "praise",
