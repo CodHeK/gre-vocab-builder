@@ -65,6 +65,7 @@ class Test extends Component {
             options: options,
           }
         );
+        wordMap.set(typeWords[randomWord], 1);
         num--;
       }
     }
