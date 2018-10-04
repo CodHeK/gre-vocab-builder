@@ -29,14 +29,22 @@ class Test extends Component {
     $(".score-board").fadeIn(200);
     var num = this.state.total, min = lower, max = upper;
     var questions = [];
-    for(var i = 0; i < num; i++) {
+    var wordMap = new Map();
+    while(num != 0) {
       var vocabList = Math.floor(Math.random() * (+max - +min) + +min);
       var wordList = data["" + vocabList + ""];
       var randomType = Math.floor(Math.random() * (wordList.length - 0) + 0);
       var opts = 4, options = [];
-      while(opts--) {
+      var map = new Map();
+      while(opts != 0) {
         var optionType = Math.floor(Math.random() * (wordList.length - 0) + 0);
-        options.push(wordList[optionType].type);
+        if(map.has(wordList[optionType].type))
+          continue;
+        else {
+          map.set(wordList[optionType].type, 1);
+          options.push(wordList[optionType].type);
+          opts--;
+        }
       }
       var idx = options.indexOf(wordList[randomType].type);
       if(idx == -1) {
@@ -46,25 +54,25 @@ class Test extends Component {
       var typeWords = wordList[randomType].words;
       var randomWord = Math.floor(Math.random() * (typeWords.length - 0) + 0);
 
-      questions.push(
-        {
-          id: num,
-          type: wordList[randomType].type,
-          word: typeWords[randomWord],
-          options: options,
-        }
-      );
-      console.log(num);
+      if(wordMap.has(typeWords[randomWord]))
+        continue;
+      else {
+        questions.push(
+          {
+            id: num,
+            type: wordList[randomType].type,
+            word: typeWords[randomWord],
+            options: options,
+          }
+        );
+        num--;
+      }
     }
-    console.log(questions.length);
-
     this.setState({ questions: questions });
   }
 
   updateScore(score) {
-    this.setState({ score: score }, () => {
-      console.log("parent", this.state.score);
-    });
+    this.setState({ score: score });
   }
 
   render() {

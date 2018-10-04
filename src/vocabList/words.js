@@ -22,7 +22,7 @@ export const data =
       "words": ["intimidate", "omnious", "sinister"],
     },
     {
-      "type": "very angry",
+      "type": "very-angry",
       "words": ["enrage", "fume", "irate", "glower", "incense", "infuriate", "irate", "ire", "livid", "rabid", "seethe", "smolder", "wrath"],
     },
     {
