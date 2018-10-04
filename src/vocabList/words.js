@@ -82,4 +82,70 @@ export const data =
       "words": ["didantic", "pedantic"],
     },
   ],
+  "2": [
+    {
+      "type": "hate",
+      "words": ["abhor", "animosity", "antipathy", "aversion", "despicable", "detest", "loathe", "odious", "repel", "repugnant", "repulsion"],
+    },
+    {
+      "type": "outdated-old-fashioned",
+      "words": ["antediluvian", "antiquated", "archaic", "dated", "obsolete", "outmoded", "quaint"],
+    },
+    {
+      "type": "time-related-words",
+      "words": ["anachronism", "chronicle", "choronological"],
+    },
+    {
+      "type": "cautious-careful",
+      "words": ["chary", "circumspect", "gingerly", "heedful", "leery", "prudent", "wary"],
+    },
+    {
+      "type": "self-satisfaction",
+      "words": ["smug", "smirk", "complacent", "gloat"],
+    },
+    {
+      "type": "minor-scolding-warning",
+      "words": ["admonish", "censure", "chastise", "chide", "rebuke", "reprimand", "reproach", "reprove"],
+    },
+    {
+      "type": "disapprove-scold",
+      "words": ["assial", "berate", "castigate", "decry", "denounce", "denunciation", "diatribe", "epithet", "excoriate", "fulminate", "invective", "lambaste", "rant", "revile", "rile", "tirade", "upbraid", "vituperative"],
+    },
+    {
+      "type": "to-defeat",
+      "words": ["pulverize", "drub", "rout", "subjugate", "vanquish"],
+    },
+    {
+      "type": "rule-princple-law",
+      "words": ["axioms", "canons", "dictum", "doctrine", "dogmas", "mandate", "tenets"],
+    },
+    {
+      "type": "rebellious-unconventional",
+      "words": ["dissident", "heresy", "heretical", "heterdox", "iconoclast", "insurgent", "insurrection", "maverick", "nonconformist", "radical", "renegade", "revolutionary", "subversive"],
+    },
+    {
+      "type": "complain",
+      "words": ["captious", "carping", "grouse", "querulous"],
+    },
+    {
+      "type": "danger",
+      "words": ["jeopardy", "pitfall", "precarious", "snare"],
+    },
+    {
+      "type": "bitter-feelings-ill-will",
+      "words": ["malevolence", "malice", "rancor", "vicious", "virulent"],
+    },
+    {
+      "type": "troubled",
+      "words": ["beset", "beleaguered", "plagued"],
+    },
+    {
+      "type": "mock-disrespect",
+      "words": ["abase", "belittle", "condoscend", "contempt", "denigrate", "deride", "disdain", "disparage", "jeer", "lampoon", "patronize", "sarcastic", "sardonic", "satire", "scoff", "scorn", "sneer", "snicker", "snide", "spurn", "taunt"],
+    },
+    {
+      "type": "praise",
+      "words": ["acclaim", "accolade", "appluad", "approbation", "commendable", "eulogy", "exalt", "extoil", "glorify", "hail", "laud", "lionize", "plaudit"],
+    },
+  ],
 }

@@ -26,7 +26,7 @@ class Test extends Component {
   generateQuestions() {
     const { lower, upper } = this.state;
     $(".start, .select, .learn-title").fadeOut(300);
-    $(".score-board").fadeIn(200);
+    $(".score-board, .end").fadeIn(200);
     var num = this.state.total, min = lower, max = upper;
     var questions = [];
     var wordMap = new Map();
@@ -82,10 +82,10 @@ class Test extends Component {
     return (
       <div className="App container">
         <div className="row">
-          <div className="col-md-3">
+          <div className="col-md-3 col-sm-12 score">
             <div className="score-board">Score: {this.state.score} / {this.state.total} </div>
           </div>
-          <div className="col-md-6 learn">
+          <div className="col-md-6 learn col-sm-12">
             <h2 className="learn-title">Enter the range of vocab lists to generate test!</h2>
             <hr />
             <table style={{ width: '100%' }} className="select">
@@ -96,7 +96,9 @@ class Test extends Component {
               </tr>
             </table>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-3">
+            <a href="/" className="btn btn-default test-btn end">End Test</a>
+          </div>
         </div>
         <button className="btn btn-default start" onClick={this.generateQuestions.bind(this)}>start</button>
         <div className="test-area">
