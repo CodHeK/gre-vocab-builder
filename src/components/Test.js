@@ -10,6 +10,8 @@ class Test extends Component {
       questions: [],
       lower: 0,
       upper: 0,
+      score: 0,
+      total: 10,
     }
   }
 
@@ -23,8 +25,9 @@ class Test extends Component {
 
   generateQuestions() {
     const { lower, upper } = this.state;
-    $(".start").hide(300);
-    var num = 3, min = lower, max = upper;
+    $(".start, .select, .learn-title").fadeOut(300);
+    $(".score-board").fadeIn(200);
+    var num = this.state.total, min = lower, max = upper;
     var questions = [];
     for(var i = 0; i < num; i++) {
       var vocabList = Math.floor(Math.random() * (+max - +min) + +min);
@@ -58,17 +61,25 @@ class Test extends Component {
     this.setState({ questions: questions });
   }
 
+  updateScore(score) {
+    this.setState({ score: score }, () => {
+      console.log("parent", this.state.score);
+    });
+  }
+
   render() {
     const { questions } = this.state;
-    const renderQuestions = questions.map((each) => <Question key={each.id} data={each} />);
+    const renderQuestions = questions.map((each) => <Question key={each.id} data={each} passScore={this.updateScore.bind(this)} state={this.state} />);
     return (
       <div className="App container">
         <div className="row">
-          <div className="col-md-3"></div>
+          <div className="col-md-3">
+            <div className="score-board">Score: {this.state.score} / {this.state.total} </div>
+          </div>
           <div className="col-md-6 learn">
             <h2 className="learn-title">Enter the range of vocab lists to generate test!</h2>
             <hr />
-            <table style={{ width: '100%' }}>
+            <table style={{ width: '100%' }} className="select">
               <tr>
                 <td><input type="text" className="l" placeholder="min = 1" onChange={this.lower.bind(this)} /></td>
                 <td><h4>to</h4></td>

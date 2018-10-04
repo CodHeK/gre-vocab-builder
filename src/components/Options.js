@@ -7,9 +7,10 @@ class Options extends Component {
       <div className="App container">
         <div className="row">
           <div className="col-md-4"></div>
-          <div className="col-md-4">
-            <a href="/test" className="btn btn-default">TEST</a>
-            <a href="/learn" className="btn btn-default">LEARN</a>
+          <div className="col-md-4 module">
+            <a href="/test" className="btn btn-default test-btn">Test</a>
+            <hr />
+            <a href="/learn" className="btn btn-default learn-btn">Learn</a>
           </div>
           <div className="col-md-4"></div>
         </div>

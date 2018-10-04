@@ -12,7 +12,9 @@ class Learn extends Component {
     console.log(this.props.data.type);
     if(this.props.data.type === each) {
       $("#"+this.props.data.word+each+this.props.data.type+"").css({'background-color': '#90EE90'});
-      $("#"+this.props.key+"").fadeOut(400);
+      var currScore = this.props.state.score;
+      currScore = currScore + 1;
+      this.props.passScore(currScore);
     }
     else {
       $("#"+this.props.data.word+each+this.props.data.type+"").css({'background-color': '#FF9494'});
