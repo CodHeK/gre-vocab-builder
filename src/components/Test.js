@@ -101,6 +101,8 @@ class Test extends Component {
   }
 
   endTest() {
+    $(".score-board, .test-btn .test-area").hide();
+    $("#new-btn").hide();
     var chartData = this.state.chartData;
     var eachTestData = {
       name: 'Test '+this.state.numTest.toString(),
@@ -118,7 +120,6 @@ class Test extends Component {
       end: 1,
     }, () => {
       $(".testChart").show(100);
-      $(".score-board, .test-btn .test-area .end").hide();
     });
   }
 
@@ -148,8 +149,8 @@ class Test extends Component {
             {chart}
           </div>
           <div className="col-md-3">
-            <button className="btn btn-default test-btn end" onClick={this.endTest.bind(this)}>End Test</button>
-            <button className="btn btn-default test-btn new" onClick={this.newTest.bind(this)}>New Test</button>
+            <button className="btn btn-default test-btn end" id="end-btn" onClick={this.endTest.bind(this)}>End Test</button>
+            <button className="btn btn-default test-btn new" id="new-btn" onClick={this.newTest.bind(this)}>New Test</button>
           </div>
         </div>
         <button className="btn btn-default start" onClick={this.generateQuestions.bind(this)}>start</button>
