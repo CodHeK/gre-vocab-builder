@@ -26,7 +26,7 @@ class Test extends Component {
   generateQuestions() {
     const { lower, upper } = this.state;
     $(".start, .select, .learn-title").fadeOut(300);
-    $(".score-board, .end").fadeIn(200);
+    $(".score-board, .end, .new").fadeIn(200);
     var num = this.state.total, min = lower, max = upper;
     var questions = [];
     var wordMap = new Map();
@@ -76,6 +76,18 @@ class Test extends Component {
     this.setState({ score: score });
   }
 
+  newTest() {
+    this.setState({
+      questions: [],
+      lower: this.state.lower,
+      upper: this.state.upper,
+      score: 0,
+      total: 10,
+    }, () => {
+      this.generateQuestions();
+    });
+  }
+
   render() {
     const { questions } = this.state;
     const renderQuestions = questions.map((each) => <Question key={each.id} data={each} passScore={this.updateScore.bind(this)} state={this.state} />);
@@ -97,7 +109,8 @@ class Test extends Component {
             </table>
           </div>
           <div className="col-md-3">
-            <a href="/" className="btn btn-default test-btn end">End Test</a>
+            <button className="btn btn-default test-btn end" onClick={this.endTest.bind(this)}>End Test</button>
+            <button className="btn btn-default test-btn new" onClick={this.newTest.bind(this)}>New Test</button>
           </div>
         </div>
         <button className="btn btn-default start" onClick={this.generateQuestions.bind(this)}>start</button>

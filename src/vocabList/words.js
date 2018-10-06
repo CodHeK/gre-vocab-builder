@@ -75,7 +75,7 @@ export const data =
     },
     {
       "type": "be-slow-waste-time",
-      "words": ["dally", "dilly dally", "dawle", "diladatory", "laggard", "linger", "malinger"],
+      "words": ["dally", "dilly-dally", "dawle", "diladatory", "laggard", "linger", "malinger"],
     },
     {
       "type": "to-do-with-teaching",

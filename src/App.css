@@ -88,5 +88,21 @@
   display: none;
   width: 100px;
   height: 40px;
-  font-size: 16px;
+  padding: auto;
+  font-size: 13.5px;
+  position: fixed;
+  z-index: 100;
+  line-height: 30px;
+}
+
+.new {
+  display: none;
+  width: 100px;
+  height: 40px;
+  padding: auto;
+  margin-top: 6em;
+  font-size: 13.5px;
+  position: fixed;
+  z-index: 100;
+  line-height: 30px;
 }
