@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { data } from '../vocabList/words';
 import Question from './Question';
+import Chart from './Chart';
 import $ from 'jquery';
 
 class Test extends Component {
@@ -11,7 +12,10 @@ class Test extends Component {
       lower: 0,
       upper: 0,
       score: 0,
-      total: 10,
+      total: 5,
+      chartData: [],
+      numTest: 0,
+      end: 0,
     }
   }
 
@@ -69,7 +73,7 @@ class Test extends Component {
         num--;
       }
     }
-    this.setState({ questions: questions });
+    this.setState({ questions: questions, numTest: this.state.numTest + 1, end: 0 });
   }
 
   updateScore(score) {
@@ -77,20 +81,54 @@ class Test extends Component {
   }
 
   newTest() {
+    var chartData = this.state.chartData;
+    var eachTestData = {
+      name: 'Test '+this.state.numTest.toString(),
+      score: this.state.score,
+    };
+    console.log(chartData);
+    chartData.push(eachTestData);
     this.setState({
       questions: [],
       lower: this.state.lower,
       upper: this.state.upper,
       score: 0,
-      total: 10,
+      total: this.state.total,
+      chartData: chartData,
     }, () => {
       this.generateQuestions();
     });
   }
 
+  endTest() {
+    var chartData = this.state.chartData;
+    var eachTestData = {
+      name: 'Test '+this.state.numTest.toString(),
+      score: this.state.score,
+    };
+    console.log(chartData);
+    chartData.push(eachTestData);
+    this.setState({
+      questions: [],
+      lower: this.state.lower,
+      upper: this.state.upper,
+      score: 0,
+      total: this.state.total,
+      chartData: chartData,
+      end: 1,
+    }, () => {
+      $(".testChart").show(100);
+      $(".score-board, .test-btn .test-area .end").hide();
+    });
+  }
+
   render() {
-    const { questions } = this.state;
+    const { questions, chartData, end } = this.state;
     const renderQuestions = questions.map((each) => <Question key={each.id} data={each} passScore={this.updateScore.bind(this)} state={this.state} />);
+    let chart;
+    if(end == 1) {
+      chart = <Chart data={chartData} />;
+    }
     return (
       <div className="App container">
         <div className="row">
@@ -107,6 +145,7 @@ class Test extends Component {
                 <td><input type="text" className="r" placeholder="max = 14" onChange={this.upper.bind(this)} /></td>
               </tr>
             </table>
+            {chart}
           </div>
           <div className="col-md-3">
             <button className="btn btn-default test-btn end" onClick={this.endTest.bind(this)}>End Test</button>
@@ -117,6 +156,7 @@ class Test extends Component {
         <div className="test-area">
           {renderQuestions}
         </div>
+        {chartData}
       </div>
     );
   }

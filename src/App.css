@@ -106,3 +106,9 @@
   z-index: 100;
   line-height: 30px;
 }
+
+.testChart {
+  display: none;
+  width: 100%;
+  height: 400px;
+}
