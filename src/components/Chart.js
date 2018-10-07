@@ -14,6 +14,7 @@ class Chart extends Component {
          <Tooltip/>
          <Legend />
          <Line type="monotone" dataKey="score" stroke="#8884d8" activeDot={{r: 8}}/>
+         <Line type="monotone" dataKey="time" stroke="#82ca9d" />
       </LineChart>
     );
   }

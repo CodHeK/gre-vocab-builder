@@ -8,17 +8,17 @@ class Learn extends Component {
   }
 
   check(each, e) {
-    console.log(each);
-    console.log(this.props.data.type);
     if(this.props.data.type === each) {
       $("#"+this.props.data.word+each+this.props.data.type+"").css({'background-color': '#90EE90'});
       var currScore = this.props.state.score;
       currScore = currScore + 1;
-      this.props.passScore(currScore);
+      this.props.passScore(currScore, this.props.data.id);
     }
     else {
       $("#"+this.props.data.word+each+this.props.data.type+"").css({'background-color': '#FF9494'});
       $("#"+this.props.data.word+this.props.data.type+this.props.data.type+"").css({'background-color': '#90EE90'});
+      var currScore = this.props.state.score;
+      this.props.passScore(currScore, this.props.data.id)
     }
   }
 

@@ -7,6 +7,7 @@ import $ from 'jquery';
 class Test extends Component {
   constructor() {
     super();
+    const startTime = Date.now();
     this.state = {
       questions: [],
       lower: 0,
@@ -16,6 +17,9 @@ class Test extends Component {
       chartData: [],
       numTest: 0,
       end: 0,
+      qAns: 0,
+      startTime: startTime,
+      times: [],
     }
   }
 
@@ -76,17 +80,29 @@ class Test extends Component {
     this.setState({ questions: questions, numTest: this.state.numTest + 1, end: 0 });
   }
 
-  updateScore(score) {
-    this.setState({ score: score });
+  updateScore(score, id) {
+    var timesArray = this.state.times;
+    if(this.state.qAns === this.state.total-1) {
+      var timesNow = Date.now();
+      timesArray.push(timesNow);
+    }
+    this.setState({ score: score, qAns: this.state.qAns + 1, times: timesArray });
   }
 
   newTest() {
     var chartData = this.state.chartData;
+    const { times } = this.state;
+    var testTime;
+    if(this.state.numTest === 1) {
+      testTime = Math.floor((times[this.state.numTest-1] - this.state.startTime)/1000);
+    } else {
+      testTime = Math.floor((times[this.state.numTest-1] - times[this.state.numTest-2])/1000);
+    }
     var eachTestData = {
       name: 'Test '+this.state.numTest.toString(),
       score: this.state.score,
+      time: testTime,
     };
-    console.log(chartData);
     chartData.push(eachTestData);
     this.setState({
       questions: [],
@@ -95,6 +111,7 @@ class Test extends Component {
       score: 0,
       total: this.state.total,
       chartData: chartData,
+      qAns: 0,
     }, () => {
       this.generateQuestions();
     });
@@ -102,13 +119,22 @@ class Test extends Component {
 
   endTest() {
     $(".score-board, .test-btn .test-area").hide();
-    $("#new-btn").hide();
+    $("#end-btn, #new-btn").hide();
+    $(".refresh").show();
     var chartData = this.state.chartData;
+    const { times } = this.state;
+    var testTime;
+    if(this.state.numTest === 1) {
+      testTime = Math.floor((times[this.state.numTest-1]- this.state.startTime)/1000);
+    } else {
+      testTime = Math.floor((times[this.state.numTest-1] - times[this.state.numTest-2])/1000);
+    }
     var eachTestData = {
       name: 'Test '+this.state.numTest.toString(),
       score: this.state.score,
+      time: testTime,
     };
-    console.log(chartData);
+
     chartData.push(eachTestData);
     this.setState({
       questions: [],
@@ -118,6 +144,8 @@ class Test extends Component {
       total: this.state.total,
       chartData: chartData,
       end: 1,
+      qAns: 0,
+      times: [],
     }, () => {
       $(".testChart").show(100);
     });
@@ -151,6 +179,7 @@ class Test extends Component {
           <div className="col-md-3">
             <button className="btn btn-default test-btn end" id="end-btn" onClick={this.endTest.bind(this)}>End Test</button>
             <button className="btn btn-default test-btn new" id="new-btn" onClick={this.newTest.bind(this)}>New Test</button>
+            <a href="/" className="btn btn-default test-btn refresh">EXIT</a>
           </div>
         </div>
         <button className="btn btn-default start" onClick={this.generateQuestions.bind(this)}>start</button>
