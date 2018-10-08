@@ -10,7 +10,9 @@ class Options extends Component {
           <div className="col-md-4 module">
             <a href="/test" className="btn btn-default test-btn">Take a Test</a>
             <hr />
-            <a href="/learn" className="btn btn-default learn-btn">Learn</a>
+            <a href="/learn" className="btn btn-default learn-btn">Learn/Search</a>
+            <hr />
+            <a href="/add" className="btn btn-default learn-btn">Add words?</a>
           </div>
           <div className="col-md-4"></div>
         </div>

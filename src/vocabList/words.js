@@ -1,6 +1,6 @@
-export const data =
+export var data =
 {
-  "1" : [
+  "1": [
     {
       "type": "predicton",
       "words": ["augur", "augury", "forecast", "foresight", "foresee", "foretell", "presage", "prescience", "prognosis"],

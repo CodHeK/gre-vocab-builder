@@ -1,47 +1,55 @@
 import React, { Component } from 'react';
+import { data } from '../vocabList/words';
+import $ from 'jquery';
 import '../App.css';
 
 class Learn extends Component {
   constructor() {
     super();
     this.state = {
-      questions: [],
-      lower: 0,
-      upper: 0,
+      searchWord: '',
+      data: [],
     }
   }
 
-  lower(e) {
-    if(e.which === 13) {
-      this.setState({ lower: e.target.value });
-    }
-  }
-
-  upper(e) {
-    if(e.which === 13) {
-      this.setState({ upper: e.target.value });
-    }
+  search(e) {
+      var searchVal = e.target.value;
+      console.log(searchVal);
+      let filtered = [];
+      for(var i = 1; i < 3; i++) {
+        var wordData = data["" + String(i) + ""];
+        for(var j = 0; j < wordData.length; j++) {
+          var wordList = wordData[j].words;
+          for(var k = 0; k < wordList.length; k++) {
+            if(String(wordList[k]).match(searchVal) || String(wordData[j].type).match(searchVal)) {
+              filtered.push({ word: wordList[k], type: wordData[j].type });
+            }
+          }
+        }
+      }
+      this.setState({ searchWord: searchVal, data: filtered });
   }
 
   render() {
+    const { searchVal, data } = this.state;
+    const searchedWords = data.map((each) => <div className="opts">{each.word} - <b>{each.type}</b></div>);
     return (
       <div className="App container">
         <div className="row">
-          <div className="col-md-3"></div>
-          <div className="col-md-6 learn">
-            <h2 className="learn-title">Enter the range of vocab lists to practice!</h2>
+          <div className="col-md-4"></div>
+          <div className="col-md-4">
+            <h3 style={{ fontSize: '18px', color: 'black', fontWeight: 500 }}>Search for the words meaning</h3>
             <hr />
-            <table style={{ width: '100%' }}>
-              <tr>
-                <td><input type="text" className="l" placeholder="min = 1" onKeyPress={this.lower.bind(this)} /></td>
-                <td><h4>to</h4></td>
-                <td><input type="text" className="r" placeholder="max = 14" onKeyPress={this.upper.bind(this)} /></td>
-              </tr>
-            </table>
+            <input type="text" className="wordType" placeholder="Type of word eg: savant" onChange={this.search.bind(this)} />
+            <br />
+            <div className="search-result">
+              {searchedWords}
+            </div>
           </div>
-          <div className="col-md-3"></div>
+          <div className="col-md-4">
+              <div className="addStatus"></div>
+          </div>
         </div>
-
       </div>
     );
   }
