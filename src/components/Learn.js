@@ -40,7 +40,7 @@ class Learn extends Component {
           <div className="col-md-4">
             <h3 style={{ fontSize: '18px', color: 'black', fontWeight: 500 }}>Search for the words meaning</h3>
             <hr />
-            <input type="text" className="wordType" placeholder="Type of word eg: savant" onChange={this.search.bind(this)} />
+            <input type="text" className="wordType" placeholder="Type of word eg: savant or self-satisfaction" onChange={this.search.bind(this)} />
             <br />
             <div className="search-result">
               {searchedWords}
