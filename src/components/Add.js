@@ -44,7 +44,7 @@ class Add extends Component {
       "type": type,
       "words": wordList,
     }
-    
+
     data["1"].push(obj);
 
     var statusSet = setTimeout(function() {
@@ -69,6 +69,7 @@ class Add extends Component {
             <button className="btn btn-default start" onClick={this.add.bind(this)}>ADD</button>
           </div>
           <div className="col-md-4">
+              <a href="/" className="btn btn-default test-btn refresh1">EXIT</a>
               <div className="addStatus"></div>
           </div>
         </div>

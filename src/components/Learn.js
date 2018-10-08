@@ -47,7 +47,7 @@ class Learn extends Component {
             </div>
           </div>
           <div className="col-md-4">
-              <div className="addStatus"></div>
+            <a href="/" className="btn btn-default test-btn refresh1">EXIT</a>
           </div>
         </div>
       </div>

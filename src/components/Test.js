@@ -31,6 +31,18 @@ class Test extends Component {
       this.setState({ upper: e.target.value.trim() });
   }
 
+  shuffle(arra1) {
+    var ctr = arra1.length, temp, index;
+    while (ctr > 0) {
+        index = Math.floor(Math.random() * ctr);
+        ctr--;
+        temp = arra1[ctr];
+        arra1[ctr] = arra1[index];
+        arra1[index] = temp;
+    }
+    return arra1;
+  }
+
   generateQuestions() {
     const { lower, upper } = this.state;
     $(".start, .select, .learn-title").fadeOut(300);
@@ -59,6 +71,7 @@ class Test extends Component {
         options.pop();
         options.push(wordList[randomType].type)
       }
+      options = this.shuffle(options);
       var typeWords = wordList[randomType].words;
       var randomWord = Math.floor(Math.random() * (typeWords.length - 0) + 0);
 
