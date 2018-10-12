@@ -12,13 +12,13 @@ class Learn extends Component {
       $("#"+this.props.data.word+each+this.props.data.type+"").css({'background-color': '#90EE90'});
       var currScore = this.props.state.score;
       currScore = currScore + 1;
-      this.props.passScore(currScore, this.props.data.id);
+      this.props.passScore(currScore, this.props.data.id, this.props.data.word, this.props.data.type, 1);
     }
     else {
       $("#"+this.props.data.word+each+this.props.data.type+"").css({'background-color': '#FF9494'});
       $("#"+this.props.data.word+this.props.data.type+this.props.data.type+"").css({'background-color': '#90EE90'});
       var currScore = this.props.state.score;
-      this.props.passScore(currScore, this.props.data.id)
+      this.props.passScore(currScore, this.props.data.id, this.props.data.word, this.props.data.type, 0);
     }
   }
 

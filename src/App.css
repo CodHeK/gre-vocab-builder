@@ -149,3 +149,9 @@
   font-weight: 100;
   color: black;
 }
+
+.got-wrong {
+  display: none;
+  width: 100%;
+  height: auto;
+}

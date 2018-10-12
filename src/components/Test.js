@@ -20,6 +20,7 @@ class Test extends Component {
       qAns: 0,
       startTime: startTime,
       times: [],
+      wrong: [],
     }
   }
 
@@ -93,13 +94,17 @@ class Test extends Component {
     this.setState({ questions: questions, numTest: this.state.numTest + 1, end: 0 });
   }
 
-  updateScore(score, id) {
+  updateScore(score, id, word, type, right) {
     var timesArray = this.state.times;
+    var wrong = this.state.wrong;
     if(this.state.qAns === this.state.total-1) {
       var timesNow = Date.now();
       timesArray.push(timesNow);
     }
-    this.setState({ score: score, qAns: this.state.qAns + 1, times: timesArray });
+    if(right === 0) {
+      wrong.push({ word: word, type: type });
+    }
+    this.setState({ score: score, qAns: this.state.qAns + 1, times: timesArray, wrong: wrong });
   }
 
   newTest() {
@@ -160,13 +165,14 @@ class Test extends Component {
       qAns: 0,
       times: [],
     }, () => {
-      $(".testChart").show(100);
+      $(".testChart, .got-wrong").show(100);
     });
   }
 
   render() {
-    const { questions, chartData, end } = this.state;
+    const { questions, chartData, end, wrong } = this.state;
     const renderQuestions = questions.map((each) => <Question key={each.id} data={each} passScore={this.updateScore.bind(this)} state={this.state} />);
+    const wrongs = wrong.map((each) => <div className="opts">{each.word} - <b>{each.type}</b></div>)
     let chart;
     if(end == 1) {
       chart = <Chart data={chartData} />;
@@ -200,6 +206,19 @@ class Test extends Component {
           {renderQuestions}
         </div>
         {chartData}
+        <div className="got-wrong">
+          <div className="row">
+            <div className="col-md-4"></div>
+            <div className="col-md-4">
+              <h3 className="learn-title1">Words that you got wrong !</h3>
+              <br />
+              {wrongs}
+              <br />
+            </div>
+            <div className="col-md-4">
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
